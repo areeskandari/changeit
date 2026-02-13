@@ -74,6 +74,36 @@ Language switcher is available in the header.
 npm run build
 ```
 
+## Deployment
+
+### Deploying to GitHub
+
+1. Initialize git (if you have not already):
+
+```bash
+git init
+git add .
+git commit -m "Initial commit"
+```
+
+2. Create a new repository on GitHub (via the GitHub UI), then add it as a remote and push:
+
+```bash
+git remote add origin https://github.com/<your-username>/<your-repo>.git
+git branch -M main
+git push -u origin main
+```
+
+### Deploying to Vercel
+
+1. Go to the Vercel dashboard and import your GitHub repository.
+2. Vercel will auto-detect this as a Next.js 14 project and use:
+   - Install command: `npm install`
+   - Build command: `npm run build`
+   - Output: Next.js app (no manual output directory needed)
+3. Set any required environment variables in the Vercel project settings (for example, Stripe keys when you implement real checkout).
+4. Click **Deploy** to create your production deployment and preview URLs.
+
 ## License
 
 © 2024 ChangeIt. All rights reserved.
