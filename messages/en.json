@@ -1,0 +1,290 @@
+{
+  "common": {
+    "sendSupport": "Send Support",
+    "seeHowItWorks": "See How It Works",
+    "startMonthlyPlan": "Start Monthly Plan",
+    "learnMore": "Learn More",
+    "getStarted": "Get Started",
+    "contact": "Contact",
+    "about": "About",
+    "pricing": "Pricing",
+    "faq": "FAQ",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "compliance": "Compliance",
+    "help": "Help Center"
+  },
+  "hero": {
+    "headline": "Support Your Family. Securely. Globally.",
+    "subheadline": "Fast international family support transfers through our trusted settlement network.",
+    "trustBadges": {
+      "securePayments": "Secure Payments",
+      "multiLayerVerification": "Multi-Layer Verification",
+      "trustedPartners": "Trusted Local Partners",
+      "settlement": "3–12 Hour Settlement"
+    }
+  },
+  "howItWorks": {
+    "title": "How It Works",
+    "step1": {
+      "title": "Send Funds",
+      "description": "You send funds from anywhere in the world using secure international payment methods."
+    },
+    "step2": {
+      "title": "We Process",
+      "description": "We confirm receipt and process through our licensed local business network."
+    },
+    "step3": {
+      "title": "Family Receives",
+      "description": "Your family receives support within 3–12 hours after confirmation."
+    },
+    "note": "Settlement time: 3–12 hours after confirmation of incoming funds."
+  },
+  "pricing": {
+    "title": "Simple, Transparent Pricing",
+    "tier1": {
+      "range": "Up to $10,000",
+      "fee": "10%"
+    },
+    "tier2": {
+      "range": "Up to $50,000",
+      "fee": "7%"
+    },
+    "tier3": {
+      "range": "Above $50,000",
+      "fee": "5%"
+    },
+    "note": "No hidden fees. Competitive exchange settlement rates."
+  },
+  "monthlyPlan": {
+    "title": "Automated Monthly Family Support",
+    "description": "Set up recurring monthly transfers and ensure your family receives consistent support without manual processing.",
+    "features": {
+      "fixedAmount": "Fixed monthly amount",
+      "flexibleCancellation": "Flexible cancellation",
+      "priorityProcessing": "Priority processing",
+      "lowerFriction": "Lower operational friction"
+    }
+  },
+  "security": {
+    "title": "Security First. Always.",
+    "points": {
+      "kyc": "Multi-layer identity verification (KYC)",
+      "aml": "AML monitoring systems",
+      "encryption": "Secure encrypted payment processing",
+      "network": "Independent settlement network structure",
+      "licensed": "Funds handled through licensed local businesses",
+      "noExposure": "No direct exposure of sender accounts to local settlement activity"
+    }
+  },
+  "whyChooseUs": {
+    "title": "Why Choose Us",
+    "points": {
+      "fast": "Fast 3–12 hour settlement",
+      "transparent": "Transparent tiered pricing",
+      "global": "Global access",
+      "trusted": "Trusted local business network",
+      "compliance": "Dedicated compliance team",
+      "security": "Enterprise-grade security"
+    }
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "questions": {
+      "q1": "How long does it take?",
+      "a1": "3–12 hours after confirmation of incoming funds.",
+      "q2": "Are my payments secure?",
+      "a2": "Yes. We use encrypted payment systems and compliance monitoring.",
+      "q3": "What currencies do you support?",
+      "a3": "Major international currencies (USD, EUR, GBP and more).",
+      "q4": "Do you offer recurring transfers?",
+      "a4": "Yes. Monthly support plans are available.",
+      "q5": "How are funds settled?",
+      "a5": "Through a structured settlement network of licensed local businesses."
+    }
+  },
+  "footer": {
+    "disclaimer": "This platform operates in accordance with applicable international financial regulations.",
+    "copyright": "© 2024 ChangeIt. All rights reserved."
+  },
+  "about": {
+    "title": "About ChangeIt",
+    "subtitle": "Empowering Global Family Support",
+    "mission": {
+      "title": "Our Mission",
+      "content": "ChangeIt enables secure, fast, and transparent international family support transfers through a trusted settlement network. We connect families worldwide by facilitating reliable financial support transfers."
+    },
+    "vision": {
+      "title": "Our Vision",
+      "content": "To become the most trusted global platform for family support transfers, ensuring security, compliance, and transparency in every transaction."
+    },
+    "values": {
+      "title": "Our Values",
+      "security": "Security First",
+      "transparency": "Transparency",
+      "compliance": "Regulatory Compliance",
+      "trust": "Trust"
+    }
+  },
+  "compliance": {
+    "title": "Compliance & Security",
+    "subtitle": "Your Security is Our Priority",
+    "kyc": {
+      "title": "Know Your Customer (KYC)",
+      "content": "We implement comprehensive KYC procedures to verify the identity of all users and ensure compliance with international regulations."
+    },
+    "aml": {
+      "title": "Anti-Money Laundering (AML)",
+      "content": "Our AML monitoring systems continuously analyze transactions to detect and prevent suspicious activities."
+    },
+    "dataProtection": {
+      "title": "Data Protection",
+      "content": "We use industry-standard encryption and security measures to protect your personal and financial information."
+    },
+    "regulatory": {
+      "title": "Regulatory Compliance",
+      "content": "ChangeIt operates in full compliance with applicable international financial regulations and maintains relationships with licensed local business partners."
+    }
+  },
+  "monthlyPlans": {
+    "title": "Monthly Support Plans",
+    "subtitle": "Automated Recurring Transfers",
+    "description": "Set up a monthly support plan to ensure your family receives consistent financial support without manual intervention.",
+    "benefits": {
+      "title": "Benefits",
+      "consistency": "Consistent monthly support",
+      "convenience": "Set it and forget it",
+      "priority": "Priority processing",
+      "flexibility": "Cancel anytime"
+    },
+    "howToStart": {
+      "title": "How to Start",
+      "step1": "Contact our support team",
+      "step2": "Set your monthly amount",
+      "step3": "Choose your payment method",
+      "step4": "Your plan starts automatically"
+    }
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "We're here to help",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "subject": "Subject",
+      "message": "Message",
+      "send": "Send Message"
+    },
+    "info": {
+      "title": "Get in Touch",
+      "description": "For inquiries about our services, support, or compliance matters, please reach out through the form below."
+    }
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last Updated: January 2024",
+    "introduction": "ChangeIt is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your information.",
+    "dataCollection": {
+      "title": "Data Collection",
+      "content": "We collect information necessary to provide our services, including identity verification data, transaction information, and contact details."
+    },
+    "dataUse": {
+      "title": "How We Use Your Data",
+      "content": "Your data is used solely for providing our services, compliance purposes, and improving our platform. We do not sell your personal information."
+    },
+    "dataSecurity": {
+      "title": "Data Security",
+      "content": "We implement industry-standard security measures including encryption, secure servers, and access controls to protect your information."
+    },
+    "yourRights": {
+      "title": "Your Rights",
+      "content": "You have the right to access, correct, or delete your personal information. Contact us to exercise these rights."
+    }
+  },
+  "terms": {
+    "title": "Terms of Service",
+    "lastUpdated": "Last Updated: January 2024",
+    "introduction": "By using ChangeIt, you agree to these Terms of Service. Please read them carefully.",
+    "serviceDescription": {
+      "title": "Service Description",
+      "content": "ChangeIt provides international family support transfer services through a licensed settlement network."
+    },
+    "userObligations": {
+      "title": "User Obligations",
+      "content": "Users must provide accurate information, comply with all applicable laws, and use the service only for legitimate purposes."
+    },
+    "fees": {
+      "title": "Fees",
+      "content": "Our fee structure is transparent and disclosed before each transaction. Fees vary based on transfer amount."
+    },
+    "liability": {
+      "title": "Liability",
+      "content": "ChangeIt operates within the bounds of applicable regulations. We are not liable for delays caused by third-party partners or regulatory requirements."
+    }
+  },
+  "sendSupport": {
+    "title": "Send Support",
+    "subtitle": "Complete the form below to send financial support to your family",
+    "next": "Next",
+    "back": "Back",
+    "processing": "Processing...",
+    "step1": {
+      "title": "Transfer Amount",
+      "amount": "Amount",
+      "transferAmount": "Transfer Amount",
+      "fee": "Fee",
+      "total": "Total Amount"
+    },
+    "step2": {
+      "title": "Destination Information",
+      "destinationCountry": "Destination Country",
+      "selectCountry": "Select Country",
+      "destinationCurrency": "Destination Currency",
+      "accountNumber": "Account Number",
+      "accountNumberPlaceholder": "Enter account number",
+      "accountHolderName": "Account Holder Name",
+      "accountHolderNamePlaceholder": "Full name of account holder",
+      "mobileNumber": "Mobile Number",
+      "mobileNumberPlaceholder": "Enter mobile number with country code",
+      "bankName": "Bank Name",
+      "bankNamePlaceholder": "Name of the bank",
+      "swiftCode": "SWIFT/BIC Code",
+      "swiftCodePlaceholder": "Bank SWIFT code (if applicable)",
+      "additionalNotes": "Additional Notes",
+      "additionalNotesPlaceholder": "Any additional information for the transfer"
+    },
+    "step3": {
+      "title": "Your Information",
+      "senderName": "Your Full Name",
+      "senderEmail": "Your Email",
+      "senderPhone": "Your Phone Number"
+    },
+    "step4": {
+      "title": "Payment Method",
+      "summary": "Transaction Summary",
+      "amount": "Amount",
+      "fee": "Fee",
+      "total": "Total",
+      "stripe": "Stripe",
+      "stripeDescription": "Secure payment via Stripe (Credit/Debit Card)",
+      "paypal": "PayPal",
+      "paypalDescription": "Pay with your PayPal account",
+      "proceedToPayment": "Proceed to Payment"
+    },
+    "validation": {
+      "amountRequired": "Please enter the transfer amount",
+      "destinationRequired": "Please fill in all required destination fields",
+      "paymentMethodRequired": "Please select a payment method"
+    },
+    "stripe": {
+      "redirecting": "Redirecting to Stripe...",
+      "testMode": "Stripe Sandbox Mode: This is a test transaction. In production, you would be redirected to Stripe Checkout.",
+      "error": "Error processing payment. Please try again."
+    },
+    "paypal": {
+      "redirecting": "Redirecting to PayPal...",
+      "testMode": "PayPal Sandbox Mode: This is a test transaction. In production, you would be redirected to PayPal."
+    }
+  }
+}
+
