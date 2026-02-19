@@ -79,8 +79,20 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-navy-light mt-8 pt-8 text-center">
-          <p className="text-gray-300 text-sm">{tf('copyright')}</p>
+        <div className="border-t border-navy-light mt-8 pt-8">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="flex flex-wrap items-center justify-center gap-2">
+              <span className="text-gray-300 text-xs">🔒</span>
+              <span className="text-gray-300 text-xs font-medium">Security First. Always.</span>
+              <span className="text-gray-400 text-xs">•</span>
+              <span className="text-gray-300 text-xs">Multi-layer KYC</span>
+              <span className="text-gray-400 text-xs">•</span>
+              <span className="text-gray-300 text-xs">AML Monitoring</span>
+              <span className="text-gray-400 text-xs">•</span>
+              <span className="text-gray-300 text-xs">Encrypted Processing</span>
+            </div>
+            <p className="text-gray-300 text-sm">{tf('copyright')}</p>
+          </div>
         </div>
       </div>
     </footer>

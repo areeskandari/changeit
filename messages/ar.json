@@ -42,18 +42,10 @@
   },
   "pricing": {
     "title": "أسعار بسيطة وشفافة",
-    "tier1": {
-      "range": "حتى ١٠,٠٠٠ دولار",
-      "fee": "١٠٪"
-    },
-    "tier2": {
-      "range": "حتى ٥٠,٠٠٠ دولار",
-      "fee": "٧٪"
-    },
-    "tier3": {
-      "range": "أكثر من ٥٠,٠٠٠ دولار",
-      "fee": "٥٪"
-    },
+    "fee": "رسوم المعاملة",
+    "feeAmount": "٢.٥٪",
+    "oneTimePay": "دفعة واحدة",
+    "monthlyPayment": "دفع شهري",
     "note": "لا توجد رسوم خفية. أسعار تسوية صرف تنافسية."
   },
   "monthlyPlan": {
@@ -269,6 +261,7 @@
       "stripeDescription": "دفع آمن عبر Stripe (بطاقة ائتمانية/خصم)",
       "paypal": "PayPal",
       "paypalDescription": "الدفع باستخدام حساب PayPal الخاص بك",
+      "comingSoon": "قريباً",
       "proceedToPayment": "المتابعة للدفع"
     },
     "validation": {
@@ -283,7 +276,8 @@
     },
     "paypal": {
       "redirecting": "جاري التوجيه إلى PayPal...",
-      "testMode": "وضع اختبار PayPal: هذه معاملة تجريبية. في الإنتاج، سيتم توجيهك إلى PayPal."
+      "testMode": "وضع اختبار PayPal: هذه معاملة تجريبية. في الإنتاج، سيتم توجيهك إلى PayPal.",
+      "comingSoon": "دفع PayPal قريباً. يرجى استخدام Stripe في الوقت الحالي."
     }
   }
 }

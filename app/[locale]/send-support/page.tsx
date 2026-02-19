@@ -1,6 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
+import { useLocale } from 'next-intl';
 import { useState } from 'react';
 import Script from 'next/script';
 import { Button } from '@/components/ui/button';
@@ -11,11 +12,20 @@ import { Select } from '@/components/ui/select';
 
 export default function SendSupportPage() {
   const t = useTranslations('sendSupport');
+  const locale = useLocale();
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
     // Amount & Currency
     amount: '',
     currency: 'USD',
+    
+    // Sender Info (merged with step 1)
+    senderName: '',
+    senderEmail: '',
+    senderPhone: '',
+    
+    // Payment Type (one-time or monthly)
+    paymentType: '', // 'oneTime' or 'monthly'
     
     // Destination Info
     destinationCountry: '',
@@ -26,11 +36,6 @@ export default function SendSupportPage() {
     bankName: '',
     swiftCode: '',
     additionalNotes: '',
-    
-    // Sender Info
-    senderName: '',
-    senderEmail: '',
-    senderPhone: '',
     
     // Payment Method
     paymentMethod: '', // 'stripe' or 'paypal'
@@ -47,9 +52,7 @@ export default function SendSupportPage() {
 
   const calculateFee = () => {
     const amount = parseFloat(formData.amount) || 0;
-    if (amount <= 10000) return amount * 0.10;
-    if (amount <= 50000) return amount * 0.07;
-    return amount * 0.05;
+    return amount * 0.025; // 2.5% fee
   };
 
   const totalAmount = () => {
@@ -63,13 +66,13 @@ export default function SendSupportPage() {
 
   const handleNext = () => {
     if (step === 1) {
-      if (!formData.amount || !formData.currency) {
+      if (!formData.amount || !formData.currency || !formData.senderName || !formData.senderEmail || !formData.senderPhone) {
         alert(t('validation.amountRequired'));
         return;
       }
     }
     if (step === 2) {
-      if (!formData.destinationCountry || !formData.accountNumber || !formData.mobileNumber) {
+      if (!formData.paymentType || !formData.destinationCountry || !formData.accountNumber || !formData.mobileNumber) {
         alert(t('validation.destinationRequired'));
         return;
       }
@@ -88,42 +91,38 @@ export default function SendSupportPage() {
     if (formData.paymentMethod === 'stripe') {
       // Stripe Checkout integration
       try {
-        // In a real app, you'd create a payment intent on your backend
-        // For now, we'll redirect to Stripe Checkout
         const response = await fetch('/api/create-checkout-session', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             amount: totalAmount(),
             currency: formData.currency,
-            formData,
+            formData: {
+              ...formData,
+              locale,
+            },
           }),
         });
 
-        if (response.ok) {
-          const { url } = await response.json();
-          window.location.href = url;
+        const data = await response.json();
+
+        if (response.ok && data.url) {
+          // Redirect to Stripe Checkout
+          window.location.href = data.url;
         } else {
-          // Fallback: Use Stripe test mode
-          alert(t('stripe.redirecting'));
-          // In production, this would redirect to actual Stripe Checkout
-          setTimeout(() => {
-            alert(t('stripe.testMode'));
-            setIsProcessing(false);
-          }, 1000);
+          // Show error message
+          alert(data.message || data.error || t('stripe.error'));
+          setIsProcessing(false);
         }
       } catch (error) {
+        console.error('Payment error:', error);
         alert(t('stripe.error'));
         setIsProcessing(false);
       }
     } else if (formData.paymentMethod === 'paypal') {
-      // PayPal integration
-      alert(t('paypal.redirecting'));
-      // In production, this would integrate with PayPal SDK
-      setTimeout(() => {
-        alert(t('paypal.testMode'));
-        setIsProcessing(false);
-      }, 1000);
+      // PayPal coming soon
+      alert(t('paypal.comingSoon'));
+      setIsProcessing(false);
     }
   };
 
@@ -139,7 +138,7 @@ export default function SendSupportPage() {
 
             {/* Progress Steps */}
             <div className="flex items-center justify-between mb-8">
-              {[1, 2, 3, 4].map((s) => (
+              {[1, 2, 3].map((s) => (
                 <div key={s} className="flex items-center flex-1">
                   <div
                     className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold ${
@@ -150,7 +149,7 @@ export default function SendSupportPage() {
                   >
                     {s}
                   </div>
-                  {s < 4 && (
+                  {s < 3 && (
                     <div
                       className={`flex-1 h-1 mx-2 ${
                         step > s ? 'bg-green-600' : 'bg-gray-200'
@@ -161,7 +160,7 @@ export default function SendSupportPage() {
               ))}
             </div>
 
-            {/* Step 1: Amount & Currency */}
+            {/* Step 1: Amount, Currency & Sender Info (Merged) */}
             {step === 1 && (
               <div className="space-y-6 animate-fade-in">
                 <h2 className="text-2xl font-semibold text-navy">{t('step1.title')}</h2>
@@ -209,6 +208,46 @@ export default function SendSupportPage() {
                   </div>
                 )}
 
+                <div className="pt-6 border-t border-gray-200">
+                  <h3 className="text-lg font-semibold text-navy mb-4">{t('step3.title')}</h3>
+                  
+                  <div>
+                    <Label className="mb-2 block">
+                      {t('step3.senderName')} *
+                    </Label>
+                    <Input
+                      type="text"
+                      value={formData.senderName}
+                      onChange={(e) => handleInputChange('senderName', e.target.value)}
+                      required
+                    />
+                  </div>
+
+                  <div className="mt-4">
+                    <Label className="mb-2 block">
+                      {t('step3.senderEmail')} *
+                    </Label>
+                    <Input
+                      type="email"
+                      value={formData.senderEmail}
+                      onChange={(e) => handleInputChange('senderEmail', e.target.value)}
+                      required
+                    />
+                  </div>
+
+                  <div className="mt-4">
+                    <Label className="mb-2 block">
+                      {t('step3.senderPhone')} *
+                    </Label>
+                    <Input
+                      type="tel"
+                      value={formData.senderPhone}
+                      onChange={(e) => handleInputChange('senderPhone', e.target.value)}
+                      required
+                    />
+                  </div>
+                </div>
+
                 <Button
                   onClick={handleNext}
                   className="w-full"
@@ -218,10 +257,63 @@ export default function SendSupportPage() {
               </div>
             )}
 
-            {/* Step 2: Destination Information */}
+            {/* Step 2: Payment Type & Destination Information */}
             {step === 2 && (
               <div className="space-y-6 animate-fade-in">
                 <h2 className="text-2xl font-semibold text-navy">{t('step2.title')}</h2>
+
+                {/* Payment Type Selection */}
+                <div>
+                  <Label className="mb-2 block">
+                    Payment Type *
+                  </Label>
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    <button
+                      onClick={() => handleInputChange('paymentType', 'oneTime')}
+                      className={`p-6 border-2 rounded-lg text-left transition-all ${
+                        formData.paymentType === 'oneTime'
+                          ? 'border-green-600 bg-green-50'
+                          : 'border-gray-200 hover:border-gray-300'
+                      }`}
+                    >
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <h3 className="font-bold text-navy text-lg">One Time Pay</h3>
+                          <p className="text-sm text-gray-600 mt-1">Single payment transfer</p>
+                        </div>
+                        {formData.paymentType === 'oneTime' && (
+                          <div className="w-6 h-6 bg-green-600 rounded-full flex items-center justify-center">
+                            <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                            </svg>
+                          </div>
+                        )}
+                      </div>
+                    </button>
+                    <button
+                      onClick={() => handleInputChange('paymentType', 'monthly')}
+                      className={`p-6 border-2 rounded-lg text-left transition-all ${
+                        formData.paymentType === 'monthly'
+                          ? 'border-green-600 bg-green-50'
+                          : 'border-gray-200 hover:border-gray-300'
+                      }`}
+                    >
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <h3 className="font-bold text-navy text-lg">Monthly Payment</h3>
+                          <p className="text-sm text-gray-600 mt-1">Recurring monthly transfer</p>
+                        </div>
+                        {formData.paymentType === 'monthly' && (
+                          <div className="w-6 h-6 bg-green-600 rounded-full flex items-center justify-center">
+                            <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                            </svg>
+                          </div>
+                        )}
+                      </div>
+                    </button>
+                  </div>
+                </div>
 
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
@@ -350,67 +442,8 @@ export default function SendSupportPage() {
               </div>
             )}
 
-            {/* Step 3: Sender Information */}
+            {/* Step 3: Payment Method */}
             {step === 3 && (
-              <div className="space-y-6 animate-fade-in">
-                <h2 className="text-2xl font-semibold text-navy">{t('step3.title')}</h2>
-
-                <div>
-                  <Label className="mb-2 block">
-                    {t('step3.senderName')} *
-                  </Label>
-                  <Input
-                    type="text"
-                    value={formData.senderName}
-                    onChange={(e) => handleInputChange('senderName', e.target.value)}
-                    required
-                  />
-                </div>
-
-                <div>
-                  <Label className="mb-2 block">
-                    {t('step3.senderEmail')} *
-                  </Label>
-                  <Input
-                    type="email"
-                    value={formData.senderEmail}
-                    onChange={(e) => handleInputChange('senderEmail', e.target.value)}
-                    required
-                  />
-                </div>
-
-                <div>
-                  <Label className="mb-2 block">
-                    {t('step3.senderPhone')} *
-                  </Label>
-                  <Input
-                    type="tel"
-                    value={formData.senderPhone}
-                    onChange={(e) => handleInputChange('senderPhone', e.target.value)}
-                    required
-                  />
-                </div>
-
-                <div className="flex gap-4">
-                  <Button
-                    onClick={() => setStep(step - 1)}
-                    variant="outline"
-                    className="flex-1"
-                  >
-                    {t('back')}
-                  </Button>
-                  <Button
-                    onClick={handleNext}
-                    className="flex-1"
-                  >
-                    {t('next')}
-                  </Button>
-                </div>
-              </div>
-            )}
-
-            {/* Step 4: Payment Method */}
-            {step === 4 && (
               <div className="space-y-6 animate-fade-in">
                 <h2 className="text-2xl font-semibold text-navy">{t('step4.title')}</h2>
 
@@ -464,12 +497,11 @@ export default function SendSupportPage() {
                   </button>
 
                   <button
-                    onClick={() => handleInputChange('paymentMethod', 'paypal')}
-                    className={`w-full p-6 border-2 rounded-lg text-left transition-all ${
-                      formData.paymentMethod === 'paypal'
-                        ? 'border-green-600 bg-green-50'
-                        : 'border-gray-200 hover:border-gray-300'
-                    }`}
+                    onClick={() => {
+                      alert(t('paypal.comingSoon'));
+                    }}
+                    disabled
+                    className="w-full p-6 border-2 rounded-lg text-left transition-all opacity-60 cursor-not-allowed border-gray-200 bg-gray-50"
                   >
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-4">
@@ -479,15 +511,11 @@ export default function SendSupportPage() {
                         <div>
                           <h3 className="font-semibold text-navy">{t('step4.paypal')}</h3>
                           <p className="text-sm text-gray-600">{t('step4.paypalDescription')}</p>
+                          <span className="inline-block mt-2 px-3 py-1 bg-yellow-100 text-yellow-800 text-xs font-semibold rounded-full">
+                            {t('step4.comingSoon')}
+                          </span>
                         </div>
                       </div>
-                      {formData.paymentMethod === 'paypal' && (
-                        <div className="w-6 h-6 bg-green-600 rounded-full flex items-center justify-center">
-                          <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                          </svg>
-                        </div>
-                      )}
                     </div>
                   </button>
                 </div>
@@ -516,4 +544,6 @@ export default function SendSupportPage() {
     </>
   );
 }
+
+
 

@@ -42,18 +42,10 @@
   },
   "pricing": {
     "title": "Simple, Transparent Pricing",
-    "tier1": {
-      "range": "Up to $10,000",
-      "fee": "10%"
-    },
-    "tier2": {
-      "range": "Up to $50,000",
-      "fee": "7%"
-    },
-    "tier3": {
-      "range": "Above $50,000",
-      "fee": "5%"
-    },
+    "fee": "Transaction Fee",
+    "feeAmount": "2.5%",
+    "oneTimePay": "One Time Pay",
+    "monthlyPayment": "Monthly Payment",
     "note": "No hidden fees. Competitive exchange settlement rates."
   },
   "monthlyPlan": {
@@ -269,6 +261,7 @@
       "stripeDescription": "Secure payment via Stripe (Credit/Debit Card)",
       "paypal": "PayPal",
       "paypalDescription": "Pay with your PayPal account",
+      "comingSoon": "Coming Soon",
       "proceedToPayment": "Proceed to Payment"
     },
     "validation": {
@@ -283,7 +276,8 @@
     },
     "paypal": {
       "redirecting": "Redirecting to PayPal...",
-      "testMode": "PayPal Sandbox Mode: This is a test transaction. In production, you would be redirected to PayPal."
+      "testMode": "PayPal Sandbox Mode: This is a test transaction. In production, you would be redirected to PayPal.",
+      "comingSoon": "PayPal payment is coming soon. Please use Stripe for now."
     }
   }
 }

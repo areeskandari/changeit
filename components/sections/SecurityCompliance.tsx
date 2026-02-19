@@ -25,7 +25,7 @@ export function SecurityCompliance() {
           {securityPoints.map((point, index) => (
             <div
               key={point.key}
-              className="bg-navy-light p-6 rounded-xl hover:bg-navy-light/80 transition-colors animate-slide-up"
+              className="bg-navy-light p-6 rounded-xl animate-slide-up"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="flex items-start gap-4">

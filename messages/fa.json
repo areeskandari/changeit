@@ -42,18 +42,10 @@
   },
   "pricing": {
     "title": "قیمت‌گذاری ساده و شفاف",
-    "tier1": {
-      "range": "تا ۱۰,۰۰۰ دلار",
-      "fee": "۱۰٪"
-    },
-    "tier2": {
-      "range": "تا ۵۰,۰۰۰ دلار",
-      "fee": "۷٪"
-    },
-    "tier3": {
-      "range": "بالای ۵۰,۰۰۰ دلار",
-      "fee": "۵٪"
-    },
+    "fee": "کارمزد تراکنش",
+    "feeAmount": "۲.۵٪",
+    "oneTimePay": "پرداخت یک‌باره",
+    "monthlyPayment": "پرداخت ماهانه",
     "note": "بدون هزینه‌های پنهان. نرخ‌های تسویه ارز رقابتی."
   },
   "monthlyPlan": {
@@ -269,6 +261,7 @@
       "stripeDescription": "پرداخت امن از طریق Stripe (کارت اعتباری/نقدی)",
       "paypal": "PayPal",
       "paypalDescription": "پرداخت با حساب PayPal شما",
+      "comingSoon": "به زودی",
       "proceedToPayment": "ادامه به پرداخت"
     },
     "validation": {
@@ -283,7 +276,8 @@
     },
     "paypal": {
       "redirecting": "در حال هدایت به PayPal...",
-      "testMode": "حالت تست PayPal: این یک تراکنش آزمایشی است. در حالت تولید، به PayPal هدایت می‌شوید."
+      "testMode": "حالت تست PayPal: این یک تراکنش آزمایشی است. در حالت تولید، به PayPal هدایت می‌شوید.",
+      "comingSoon": "پرداخت PayPal به زودی در دسترس خواهد بود. لطفاً در حال حاضر از Stripe استفاده کنید."
     }
   }
 }
